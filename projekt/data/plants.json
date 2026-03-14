@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Pomidor",
+    "latin": "Solanum lycopersicum",
+    "minTemp": 10,
+    "waterNeed": "high"
+  },
+  {
+    "name": "Bazylia",
+    "latin": "Ocimum basilicum",
+    "minTemp": 12,
+    "waterNeed": "medium"
+  },
+  {
+    "name": "Lawenda",
+    "latin": "Lavandula",
+    "minTemp": 5,
+    "waterNeed": "low"
+  }
+]

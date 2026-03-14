@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Garden Weather Assistant</title>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+
+  <!-- HEADER / NAVIGATION -->
+  <header class="header">
+    <h1 class="logo">🌱 Garden Weather</h1>
+
+    <nav class="nav">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="plants.html">Moje rośliny</a></li>
+        <li><a href="forecast.html">Prognoza</a></li>
+        <li><a href="settings.html">Ustawienia</a></li>
+      </ul>
+    </nav>
+  </header>
+
+
+  <!-- MAIN CONTENT -->
+  <main class="container">
+
+    <!-- CURRENT WEATHER -->
+    <section id="current-weather" class="card">
+      <h2>Aktualna pogoda</h2>
+
+      <div id="weather-data">
+        <!-- JS wstawi dane pogodowe -->
+        <p>Ładowanie danych pogodowych...</p>
+      </div>
+    </section>
+
+
+    <!-- ALERTS -->
+    <section id="alerts" class="card">
+      <h2>Alerty</h2>
+
+      <div id="alerts-container">
+        <!-- JS generuje alerty -->
+        <p>Brak alertów</p>
+      </div>
+    </section>
+
+
+    <!-- QUICK RECOMMENDATIONS -->
+    <section id="recommendations" class="card">
+      <h2>Rekomendacje</h2>
+
+      <div id="recommendation-list">
+        <!-- JS generuje rekomendacje -->
+        <p>Analiza warunków...</p>
+      </div>
+    </section>
+
+
+    <!-- USER PLANTS SUMMARY -->
+    <section id="plants-summary" class="card">
+      <h2>Moje rośliny</h2>
+
+      <div id="plants-list">
+        <!-- JS renderuje rośliny użytkownika -->
+        <p>Nie dodano jeszcze roślin.</p>
+      </div>
+
+      <a href="plants.html" class="button">
+        Zarządzaj roślinami
+      </a>
+    </section>
+
+  </main>
+
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>Garden Weather App</p>
+    <p>Projekt PS</p>
+  </footer>
+
+
+  <!-- MAIN SCRIPT -->
+  <script type="module" src="js/main.js"></script>
+
+</body>
+</html>

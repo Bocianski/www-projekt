@@ -1,0 +1,48 @@
+body{
+  font-family: Arial, sans-serif;
+  margin:0;
+  background:#f5f5f5;
+}
+
+.header{
+  background:#2e7d32;
+  color:white;
+  padding:16px;
+}
+
+.nav ul{
+  display:flex;
+  gap:16px;
+  list-style:none;
+  padding:0;
+}
+
+.nav a{
+  color:white;
+  text-decoration:none;
+}
+
+.container{
+  padding:20px;
+}
+
+.card{
+  background:white;
+  padding:16px;
+  margin-bottom:20px;
+  border-radius:8px;
+}
+
+.button{
+  display:inline-block;
+  margin-top:10px;
+  padding:8px 12px;
+  background:#2e7d32;
+  color:white;
+  text-decoration:none;
+  border-radius:4px;
+}
+
+.weather-box{
+  margin-top:10px;
+}
