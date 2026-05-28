@@ -17,20 +17,20 @@
 
     <nav class="nav">
       <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="plants.html">Moje rośliny</a></li>
-        <li><a href="forecast.html">Prognoza</a></li>
-        <li><a href="settings.html">Ustawienia</a></li>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#plants">Moje rośliny</a></li>
+        <li><a href="#forecast">Prognoza</a></li>
+        <li><a href="#settings">Ustawienia</a></li>
       </ul>
     </nav>
   </header>
 
 
   <!-- MAIN CONTENT -->
-  <main class="container">
+  <main class="container" id="home">
 
     <!-- CURRENT WEATHER -->
-    <section id="current-weather" class="card">
+    <section id="forecast" class="card">
       <h2>Aktualna pogoda</h2>
 
       <div id="weather-data">
@@ -63,7 +63,7 @@
 
 
     <!-- USER PLANTS SUMMARY -->
-    <section id="plants-summary" class="card">
+    <section id="plants" class="card">
       <h2>Moje rośliny</h2>
 
       <div id="plants-list">
@@ -71,9 +71,18 @@
         <p>Nie dodano jeszcze roślin.</p>
       </div>
 
-      <a href="plants.html" class="button">
-        Zarządzaj roślinami
+      <a href="#settings" class="button">
+        Zarządzaj ustawieniami
       </a>
+    </section>
+
+    <!-- SETTINGS -->
+    <section id="settings" class="card">
+      <h2>Ustawienia</h2>
+      <div class="settings-panel">
+        <p>Skonfiguruj swoje preferencje pogodowe i powiadomienia.</p>
+        <p>Wkrótce dostępne więcej opcji.</p>
+      </div>
     </section>
 
   </main>
