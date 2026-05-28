@@ -1,20 +1,222 @@
 [
   {
+    "id": 1,
     "name": "Pomidor",
     "latin": "Solanum lycopersicum",
+    "image": "assets/plants/pomidor.jpg",
+    "countries": ["Meksyk", "Peru", "Ekwador"],
     "minTemp": 10,
-    "waterNeed": "high"
+    "maxTemp": 30,
+    "waterNeed": "high",
+    "description": "Roślina ciepłolubna, wrażliwa na przymrozki i niedobór wody."
   },
   {
+    "id": 2,
     "name": "Bazylia",
     "latin": "Ocimum basilicum",
+    "image": "assets/plants/bazylia.jpg",
+    "countries": ["Indie", "Iran", "Egipt"],
     "minTemp": 12,
-    "waterNeed": "medium"
+    "maxTemp": 28,
+    "waterNeed": "medium",
+    "description": "Zioło ciepłolubne, dobrze rośnie w miejscach słonecznych i osłoniętych."
   },
   {
+    "id": 3,
     "name": "Lawenda",
-    "latin": "Lavandula",
+    "latin": "Lavandula angustifolia",
+    "image": "assets/plants/lawenda.jpg",
+    "countries": ["Francja", "Hiszpania", "Włochy"],
     "minTemp": 5,
-    "waterNeed": "low"
+    "maxTemp": 32,
+    "waterNeed": "low",
+    "description": "Roślina odporna na suszę, preferuje stanowiska słoneczne i przepuszczalną glebę."
+  },
+  {
+    "id": 4,
+    "name": "Ogórek",
+    "latin": "Cucumis sativus",
+    "image": "assets/plants/ogorek.jpg",
+    "countries": ["Indie", "Chiny"],
+    "minTemp": 12,
+    "maxTemp": 30,
+    "waterNeed": "high",
+    "description": "Roślina ciepłolubna, wymaga regularnego podlewania i ochrony przed chłodem."
+  },
+  {
+    "id": 5,
+    "name": "Papryka",
+    "latin": "Capsicum annuum",
+    "image": "assets/plants/papryka.jpg",
+    "countries": ["Meksyk", "Gwatemala"],
+    "minTemp": 13,
+    "maxTemp": 30,
+    "waterNeed": "medium",
+    "description": "Wymaga ciepła, światła i umiarkowanej wilgotności podłoża."
+  },
+  {
+    "id": 6,
+    "name": "Truskawka",
+    "latin": "Fragaria × ananassa",
+    "image": "assets/plants/truskawka.jpg",
+    "countries": ["Francja", "Chile", "USA"],
+    "minTemp": 4,
+    "maxTemp": 26,
+    "waterNeed": "medium",
+    "description": "Roślina owocowa odporna na lekki chłód, ale wrażliwa na suszę podczas owocowania."
+  },
+  {
+    "id": 7,
+    "name": "Mięta",
+    "latin": "Mentha",
+    "image": "assets/plants/mieta.jpg",
+    "countries": ["Europa", "Azja", "Afryka"],
+    "minTemp": 3,
+    "maxTemp": 28,
+    "waterNeed": "high",
+    "description": "Lubi wilgotną glebę i półcień, dobrze znosi umiarkowane temperatury."
+  },
+  {
+    "id": 8,
+    "name": "Rozmaryn",
+    "latin": "Salvia rosmarinus",
+    "image": "assets/plants/rozmaryn.jpg",
+    "countries": ["Hiszpania", "Włochy", "Grecja"],
+    "minTemp": 5,
+    "maxTemp": 32,
+    "waterNeed": "low",
+    "description": "Roślina śródziemnomorska, dobrze znosi suszę i wysokie temperatury."
+  },
+  {
+    "id": 9,
+    "name": "Sałata",
+    "latin": "Lactuca sativa",
+    "image": "assets/plants/salata.jpg",
+    "countries": ["Egipt", "Grecja", "Włochy"],
+    "minTemp": 4,
+    "maxTemp": 24,
+    "waterNeed": "medium",
+    "description": "Preferuje umiarkowaną temperaturę i regularne podlewanie."
+  },
+  {
+    "id": 10,
+    "name": "Marchew",
+    "latin": "Daucus carota",
+    "image": "assets/plants/marchew.jpg",
+    "countries": ["Afganistan", "Iran", "Europa"],
+    "minTemp": 3,
+    "maxTemp": 26,
+    "waterNeed": "medium",
+    "description": "Roślina korzeniowa odporna na chłód, wymaga równomiernej wilgotności gleby."
+  },
+  {
+    "id": 11,
+    "name": "Cebula",
+    "latin": "Allium cepa",
+    "image": "assets/plants/cebula.jpg",
+    "countries": ["Azja Środkowa", "Iran", "Pakistan"],
+    "minTemp": 2,
+    "maxTemp": 28,
+    "waterNeed": "low",
+    "description": "Dobrze znosi chłodniejsze warunki i nie wymaga intensywnego podlewania."
+  },
+  {
+    "id": 12,
+    "name": "Czosnek",
+    "latin": "Allium sativum",
+    "image": "assets/plants/czosnek.jpg",
+    "countries": ["Azja Środkowa", "Iran"],
+    "minTemp": 0,
+    "maxTemp": 27,
+    "waterNeed": "low",
+    "description": "Roślina odporna na chłód, dobrze rośnie w przepuszczalnej glebie."
+  },
+  {
+    "id": 13,
+    "name": "Róża",
+    "latin": "Rosa",
+    "image": "assets/plants/roza.jpg",
+    "countries": ["Chiny", "Persja", "Europa"],
+    "minTemp": -5,
+    "maxTemp": 30,
+    "waterNeed": "medium",
+    "description": "Roślina ozdobna, wymaga słońca, podlewania i ochrony przed silnym mrozem."
+  },
+  {
+    "id": 14,
+    "name": "Hortensja",
+    "latin": "Hydrangea",
+    "image": "assets/plants/hortensja.jpg",
+    "countries": ["Japonia", "Chiny", "Korea"],
+    "minTemp": -3,
+    "maxTemp": 26,
+    "waterNeed": "high",
+    "description": "Lubi wilgotną glebę i półcień, źle znosi długotrwałą suszę."
+  },
+  {
+    "id": 15,
+    "name": "Pelargonia",
+    "latin": "Pelargonium",
+    "image": "assets/plants/pelargonia.jpg",
+    "countries": ["Republika Południowej Afryki"],
+    "minTemp": 8,
+    "maxTemp": 30,
+    "waterNeed": "medium",
+    "description": "Popularna roślina balkonowa, wrażliwa na przymrozki."
+  },
+  {
+    "id": 16,
+    "name": "Aloes",
+    "latin": "Aloe vera",
+    "image": "assets/plants/aloes.jpg",
+    "countries": ["Półwysep Arabski", "Afryka"],
+    "minTemp": 10,
+    "maxTemp": 35,
+    "waterNeed": "low",
+    "description": "Sukulent odporny na suszę, wymaga małej ilości wody."
+  },
+  {
+    "id": 17,
+    "name": "Fikus",
+    "latin": "Ficus benjamina",
+    "image": "assets/plants/fikus.jpg",
+    "countries": ["Indie", "Australia", "Azja Południowo-Wschodnia"],
+    "minTemp": 12,
+    "maxTemp": 28,
+    "waterNeed": "medium",
+    "description": "Roślina domowa, źle znosi przeciągi i niskie temperatury."
+  },
+  {
+    "id": 18,
+    "name": "Monstera",
+    "latin": "Monstera deliciosa",
+    "image": "assets/plants/monstera.jpg",
+    "countries": ["Meksyk", "Panama", "Kostaryka"],
+    "minTemp": 14,
+    "maxTemp": 30,
+    "waterNeed": "medium",
+    "description": "Roślina tropikalna, lubi ciepło i umiarkowaną wilgotność."
+  },
+  {
+    "id": 19,
+    "name": "Storczyk",
+    "latin": "Orchidaceae",
+    "image": "assets/plants/storczyk.jpg",
+    "countries": ["Tajlandia", "Indonezja", "Filipiny"],
+    "minTemp": 15,
+    "maxTemp": 28,
+    "waterNeed": "medium",
+    "description": "Roślina ozdobna, wymaga stabilnej temperatury i umiarkowanego podlewania."
+  },
+  {
+    "id": 20,
+    "name": "Kaktus",
+    "latin": "Cactaceae",
+    "image": "assets/plants/kaktus.jpg",
+    "countries": ["Meksyk", "USA", "Argentyna"],
+    "minTemp": 8,
+    "maxTemp": 38,
+    "waterNeed": "low",
+    "description": "Roślina pustynna, bardzo odporna na suszę i wysokie temperatury."
   }
 ]

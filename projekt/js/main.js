@@ -1,6 +1,8 @@
 import { getWeather, getForecast } from "./api/weatherApi.js";
 import { renderWeather } from "./ui/renderWeather.js";
 import { savePlants, loadPlants, saveLocation, loadLocation } from "./storage/localStorage.js";
+import { getPlantsBase } from "./api/plantsApi.js";
+import { analyzePlantRisk, getWaterNeedLabel } from "./plantRisk.js";
 
 const locations = [
   { name: "Białystok", lat: 53.13, lon: 23.16 },
@@ -14,6 +16,7 @@ const locations = [
 const state = {
   weather: null,
   plants: loadPlants(),
+  plantsBase: [],
   location: loadLocation() || locations[0] || {
     name: "Świebodzin",
     lat: 52.24,
@@ -73,7 +76,10 @@ async function renderHomeView() {
 
 function renderPlantsView() {
   const plantsHtml = state.plants.length
-    ? state.plants.map((plant, index) => `
+    ? state.plants.map((plant, index) => {
+      const risk = analyzePlantRisk(plant, state.weather);
+
+      return `
         <li>
           <strong>${plant.name}</strong>
           <br>
@@ -85,7 +91,8 @@ function renderPlantsView() {
             Usuń
           </button>
         </li>
-      `).join("")
+      `;
+    }).join("")
     : "<p>Nie dodano jeszcze roślin.</p>";
 
   app.innerHTML = `
@@ -164,6 +171,99 @@ function handleRemovePlant(event) {
   savePlants(state.plants);
 
   renderPlantsView();
+}
+
+async function renderPlantBaseView() {
+  renderLayout("Baza roślin", `<p>Ładowanie bazy roślin...</p>`);
+
+  try {
+    if (state.plantsBase.length === 0) {
+      state.plantsBase = await getPlantsBase();
+    }
+
+    app.innerHTML = `
+    <section class="card">
+      <h2>Baza roślin</h2>
+      
+      <div class="plants-grid">
+        ${state.plantsBase.map(plant => renderPlantCard(plant)).join("")}
+      </div>
+    </section>
+  `;
+
+  document.querySelectorAll(".add-plant-from-base").forEach(button => {button.addEventListener("click", handleAddPlantFromBase);
+  });
+  } catch (error) {
+    renderLayout(
+      "Błąd",
+      `<p>Nie udało się załadować bazy roślin.</p>`
+    );
+
+    console.error(error);
+  }
+}
+
+function renderPlantCard(plant) {
+  const risk = analyzePlantRisk(plant, state.weather);
+
+  return `
+  <article class="plant-card">
+    <img
+      src="${plant.image}"
+      alt="${plant.name}"
+      class="plant-image"
+      onerror="this.src='assets/plants/placeholder.jpg'"
+    >
+
+    <div class="plant-card-content">
+      <h3>${plant.name}</h3>
+      <p><em>${plant.latin}</em></p>
+
+      <p>
+        <strong>Status:</strong>
+        <span class="status status-${risk.status}">
+          ${risk.label}
+        </span>
+      </p>
+
+      <p>${risk.message}</p>
+
+      <p><strong>Temperatura:</strong> ${plant.minTemp}°C - ${plant.maxTemp}°C</p>
+      <p><strong>Woda:</strong> ${getWaterNeedLabel(plant.waterNeed)}</p>
+      <p><strong>Kraje:</strong> ${plant.countries.join(", ")}</p>
+
+      <button
+        class="add-plant-from-base"
+        data-id="${plant.id}"
+      >
+        Dodaj do moich roślin
+      </button>
+    </div>
+  </article>
+  `;
+}
+
+function handleAddPlantFromBase(event) {
+  const plantId = Number(event.target.dataset.id);
+  const plant = state.plantsBase.find(item => item.id === plantId);
+
+  if (!plant) return;
+
+  const userPlant = {
+    id: Date.now(),
+    baseId: plant.id,
+    name: plant.name,
+    latin: plant.latin,
+    minTemp: plant.minTemp,
+    maxTemp: plant.maxTemp,
+    waterNeed: plant.waterNeed
+  };
+
+  state.plants.push(userPlant);
+  savePlants(state.plants);
+
+  event.target.textContent = "Dodano";
+  event.target.disabled = true;
 }
 
 async function renderForecastView() {
@@ -282,7 +382,7 @@ function renderSettingsView() {
       <h2>Ustawienia</h2>
 
       <p class="current-location">
-        Aktualna lokalizacja: <strong>${state.location.name}</strong
+        Aktualna lokalizacja: <strong>${state.location.name}</strong>
       </p>
 
       <form id="settings-form" class="settings-form">
@@ -386,6 +486,8 @@ function router() {
     renderForecastView();
   } else if (route === "#settings") {
     renderSettingsView();
+  } else if (route === "#plant-base") {
+    renderPlantBaseView();
   } else {
     renderHomeView();
   }

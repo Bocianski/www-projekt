@@ -232,3 +232,67 @@ select {
   color: #1b5e20;
   font-weight: bold;
 }
+
+.plants-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.plant-card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #d9e5d9;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #f8fbf8;
+}
+
+.plant-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  background: #dfe8df;
+}
+
+.plant-card-content {
+  padding: 16px;
+}
+
+.plant-card-content h3 {
+  margin-top: 0;
+  color: #2e7d32;
+}
+
+.status {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 999px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.status-safe {
+  background: #dff2df;
+  color: #1b5e20;
+}
+
+.status-warning {
+  background: #fff3cd;
+  color: #8a5a00;
+}
+
+.status-danger {
+  background: #f8d7da;
+  color: #842029;
+}
+
+.status-unknown {
+  background: #e5e7eb;
+  color: #374151;
+}
+
+button:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+}
