@@ -1,0 +1,37 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  check-static-project:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Check required files
+        run: |
+          test -f projekt/index.html
+          test -f projekt/css/main.css
+          test -f projekt/js/main.js
+          test -f projekt/js/api/weatherApi.js
+          test -f projekt/js/storage/localStorage.js
+          test -f projekt/js/ui/renderWeather.js
+          test -f projekt/data/plants.json
+
+      - name: Start local server
+        run: |
+          python3 -m http.server 8080 --directory projekt &
+          sleep 2
+
+      - name: Check static files are reachable
+        run: |
+          curl -f http://localhost:8080/index.html
+          curl -f http://localhost:8080/css/main.css
+          curl -f http://localhost:8080/js/main.js
+          curl -f http://localhost:8080/data/plants.json
