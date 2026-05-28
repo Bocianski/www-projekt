@@ -1,14 +1,23 @@
 import { getWeather, getForecast } from "./api/weatherApi.js";
 import { renderWeather } from "./ui/renderWeather.js";
-import { savePlants, loadPlants } from "./storage/localStorage.js";
+import { savePlants, loadPlants, saveLocation, loadLocation } from "./storage/localStorage.js";
+
+const locations = [
+  { name: "Białystok", lat: 53.13, lon: 23.16 },
+  { name: "Warszawa", lat: 52.23, lon: 21.01 },
+  { name: "Kraków", lat: 50.06, lon: 19.94 },
+  { name: "Wrocław", lat: 51.11, lon: 17.03 },
+  { name: "Gdańsk", lat: 54.35, lon: 18.65 },
+  { name: "Poznań", lat: 52.41, lon: 16.93 }
+];
 
 const state = {
   weather: null,
   plants: loadPlants(),
-  location: {
-    name: "Warszawa",
-    lat: 52.23,
-    lon: 21.01
+  location: loadLocation() || locations[0] || {
+    name: "Świebodzin",
+    lat: 52.24,
+    lon: 15.54
   }
 };
 
@@ -268,15 +277,61 @@ function renderRainChart(days) {
 }
 
 function renderSettingsView() {
-  renderLayout(
-    "Ustawienia",
-    `
-      <p>Tu będzie formularz zmiany lokalizacji.</p>
-      <p>Następny krok: zapis lokalizacji w localStorage.</p>
-    `
-  );
+ app.innerHTML = `
+    <section class="card">
+      <h2>Ustawienia</h2>
+
+      <p class="current-location">
+        Aktualna lokalizacja: <strong>${state.location.name}</strong
+      </p>
+
+      <form id="settings-form" class="settings-form">
+        <label>
+          Wybierz miasto:
+          <select id="location-select" required>
+            ${locations.map(location => `
+              <option
+                value="${location.name}"
+                ${location.name === state.location.name ? "selected" : ""}
+              >
+                ${location.name}
+              </option>
+            `).join("")}
+          </select>
+        </label>
+
+        <button type="submit" class="button">Zapisz ustawienia</button>
+      </form>
+
+      <div id="setting-message"></div>
+    </section>
+  `;
+
+  document.querySelector("#settings-form").addEventListener("submit", handleSettingsSubmit);
 }
 
+function handleSettingsSubmit(event) {
+  event.preventDefault();
+
+  const selectedName = document.querySelector('#location-select').value;
+  const selectedLocation = locations.find(location => location.name === selectedName);
+
+  const messageBox = document.querySelector("#setting-message");
+
+  if (!selectedLocation) {
+    messageBox.innerHTML = `
+    <p class="error">Nieprawidłowa lokalizacja.</p>
+    `;
+    return;
+  }
+
+  state.location = selectedLocation;
+  saveLocation(selectedLocation);
+
+  messageBox.innerHTML = `
+  <p class="success">Zapisano lokalizację: ${selectedLocation.name}</p>
+  `;
+}
 function renderAlerts(weatherData) {
   const weather = weatherData.current_weather;
   const temp = weather.temperature;
