@@ -1,6 +1,7 @@
 export function renderWeather(data) {
-
   const container = document.querySelector("#weather-data");
+
+  if (!container || !data?.current_weather) return;
 
   const weather = data.current_weather;
 

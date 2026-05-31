@@ -4,18 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Garden Weather Assistant</title>
-
-  <!-- Styles -->
   <link rel="stylesheet" href="css/main.css">
 </head>
-
 <body>
-
-  <!-- HEADER / NAVIGATION -->
   <header class="header">
     <h1 class="logo">🌱 Garden Weather</h1>
 
-    <nav class="nav">
+    <nav class="nav" aria-label="Główna nawigacja">
       <ul>
         <li><a href="#home">Home</a></li>
         <li><a href="#plants">Moje rośliny</a></li>
@@ -26,78 +21,18 @@
     </nav>
   </header>
 
-
-  <!-- MAIN CONTENT -->
-  <main class="container" id="home">
-
-    <!-- CURRENT WEATHER -->
-    <section id="current-weather" class="card">
-      <h2>Aktualna pogoda</h2>
-
-      <div id="weather-data">
-        <!-- JS wstawi dane pogodowe -->
-        <p>Ładowanie danych pogodowych...</p>
-      </div>
+  <main class="container" id="app">
+    <section class="card">
+      <h2>Ładowanie aplikacji</h2>
+      <p>Przygotowywanie danych...</p>
     </section>
-
-
-    <!-- ALERTS -->
-    <section id="alerts" class="card">
-      <h2>Alerty</h2>
-
-      <div id="alerts-container">
-        <!-- JS generuje alerty -->
-        <p>Brak alertów</p>
-      </div>
-    </section>
-
-
-    <!-- QUICK RECOMMENDATIONS -->
-    <section id="recommendations" class="card">
-      <h2>Rekomendacje</h2>
-
-      <div id="recommendation-list">
-        <!-- JS generuje rekomendacje -->
-        <p>Analiza warunków...</p>
-      </div>
-    </section>
-
-
-    <!-- USER PLANTS SUMMARY -->
-    <section id="plants" class="card">
-      <h2>Moje rośliny</h2>
-
-      <div id="plants-list">
-        <!-- JS renderuje rośliny użytkownika -->
-        <p>Nie dodano jeszcze roślin.</p>
-      </div>
-
-      <a href="#settings" class="button">
-        Zarządzaj ustawieniami
-      </a>
-    </section>
-
-    <!-- SETTINGS -->
-    <section id="settings" class="card">
-      <h2>Ustawienia</h2>
-      <div class="settings-panel">
-        <p>Skonfiguruj swoje preferencje pogodowe i powiadomienia.</p>
-        <p>Wkrótce dostępne więcej opcji.</p>
-      </div>
-    </section>
-
   </main>
 
-
-  <!-- FOOTER -->
   <footer class="footer">
     <p>Garden Weather App</p>
-    <p>Projekt PS</p>
+    <p>Projekt PS - Szymon Niewiński, Michał Baniel, Adrian Czech</p>
   </footer>
 
-
-  <!-- MAIN SCRIPT -->
   <script type="module" src="js/main.js"></script>
-
 </body>
 </html>
